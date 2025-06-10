@@ -1,0 +1,17 @@
+services:
+  servidor-cpp:
+    build: .
+    container_name: servidor_cpp_tailscale
+    ports:
+      - "15015:15015"
+    volumes:
+      - tailscale-data:/var/lib/tailscale
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    stdin_open: true
+    tty: true
+
+volumes:
+  tailscale-data:
